@@ -117,92 +117,110 @@ const Eventes = ({ eventIteams, markComplete, updateEvent }) => {
       </Table>
       {isSelected && (
         <div className="container">
-          <Modal isOpen={isSelected} toggle={togglePopup}>
-            <ModalBody>
-              <Form onSubmit={handleSubmit}>
-                <FormGroup className="flex">
-                  <div className="d-flex text-sm-left flex-column p-2 ">
-                    <Label>Vahicle Type</Label>
-                    <Dropdown
-                      isOpen={dropdownOpen.vehicleType}
-                      toggle={toggleVehicleTypeDropdown}
-                      direction={"down"}
-                    >
-                      <DropdownToggle caret>
-                        {eventIteam.vehicleType}
-                      </DropdownToggle>
-                      <DropdownMenu>
-                        <DropdownItem
-                          onClick={handleDropDown}
-                          data-type="vehicleType"
-                        >
-                          Header
-                        </DropdownItem>
-                        <DropdownItem
-                          onClick={handleDropDown}
-                          data-type="vehicleType"
-                        >
-                          Some Action
-                        </DropdownItem>
-                        <DropdownItem
-                          onClick={handleDropDown}
-                          data-type="vehicleType"
-                        >
-                          Dropdown Item Text
-                        </DropdownItem>
-                      </DropdownMenu>
-                    </Dropdown>
-                  </div>
-                  <div className="d-flex text-sm-left flex-column p-2">
-                    <Label>UOM</Label>
-                    <Dropdown
-                      isOpen={dropdownOpen.uom}
-                      toggle={toggleUomDropdown}
-                      direction={"down"}
-                    >
-                      <DropdownToggle caret>{eventIteam.uom}</DropdownToggle>
-                      <DropdownMenu>
-                        <DropdownItem onClick={handleDropDown} data-type="uom">
-                          hours
-                        </DropdownItem>
-                        <DropdownItem onClick={handleDropDown} data-type="uom">
-                          mins
-                        </DropdownItem>
-                      </DropdownMenu>
-                    </Dropdown>
-                  </div>
-                  <InputGroup>
-                    <label>Amount</label>
-                    <Input
-                      type="text"
-                      name="amount"
-                      placeholder="Your text"
-                      value={eventIteam.amount}
-                      onChange={(e) => handleInput(e)}
-                    />
-                  </InputGroup>
-                  <InputGroup>
-                    <Label>Grace</Label>
-                    <Input
-                      type="text"
-                      name="grace"
-                      placeholder="Your text"
-                      value={eventIteam.grace}
-                      onChange={(e) => handleInput(e)}
-                    />
-                  </InputGroup>
-                </FormGroup>
-              </Form>
-            </ModalBody>
-            <ModalFooter>
-              <Button color="primary" onClick={handleSubmit}>
-                Done
-              </Button>
-              <Button color="secondary" onClick={togglePopup}>
-                Cancel
-              </Button>
-            </ModalFooter>
-          </Modal>
+      <Modal isOpen={isSelected} toggle={togglePopup} centered={true} size={"lg"}>
+        <ModalBody className="px-5 py-4">
+          <h4>Add Event</h4>
+          <Form onSubmit={handleSubmit}>
+            <FormGroup className="container ">
+              <div className="row row-cols-3">
+
+{/* Vahicle Type input*/}
+                <div className="col  text-sm-left  p-2">
+                  <Label>Vahicle Type</Label>
+                  <Dropdown
+                  
+                    isOpen={dropdownOpen.vehicleType}
+                    toggle={toggleVehicleTypeDropdown}
+                    direction={"down"}
+                  >
+                    <DropdownToggle caret>
+                      {eventIteam.vehicleType}
+                    </DropdownToggle>
+                    <DropdownMenu>
+                      <DropdownItem
+                        onClick={handleDropDown}
+                        data-type="vehicleType"
+                      >
+                        Header
+                      </DropdownItem>
+                      <DropdownItem
+                        onClick={handleDropDown}
+                        data-type="vehicleType"
+                      >
+                        Some Action
+                      </DropdownItem>
+                      <DropdownItem
+                        onClick={handleDropDown}
+                        data-type="vehicleType"
+                      >
+                        Dropdown Item Text
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </Dropdown>
+                </div>
+
+{/* UOM input*/}
+
+                <div className="col d-flex text-sm-left flex-column p-2">
+                  <Label>UOM</Label>
+                  <Dropdown
+                    isOpen={dropdownOpen.uom}
+                    toggle={toggleUomDropdown}
+                    direction={"down"}
+                  >
+                    <DropdownToggle caret>{eventIteam.uom}</DropdownToggle>
+                    <DropdownMenu>
+                      <DropdownItem onClick={handleDropDown} data-type="uom">
+                        hours
+                      </DropdownItem>
+                      <DropdownItem onClick={handleDropDown} data-type="uom">
+                        mins
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </Dropdown>
+                </div>
+
+{/* Amount input*/}
+                <div className="col">
+                <label className="inline">Amount</label>
+                <InputGroup >
+                  <Input
+                    type="text"
+                    name="amount"
+                    placeholder="Your text"
+                    value={eventIteam.amount}
+                    onChange={(e) => handleInput(e)}
+                  />
+                </InputGroup>
+                </div>
+
+{/* Grace input*/}
+                <div className="col">
+                  <Label className="inline">Grace</Label>
+                  <InputGroup >
+                  <Input
+                    type="text"
+                    name="grace"
+                    placeholder="Your text"
+                    value={eventIteam.grace}
+                    onChange={(e) => handleInput(e)}
+                  />
+                </InputGroup>
+                </div>
+              </div>
+
+            </FormGroup>
+          </Form>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" outline onClick={handleSubmit} className="rounded-pill py-2 px-3 mx-4">
+            Done
+          </Button>
+          <Button color="primary" outline onClick={togglePopup} className='rounded-pill py-2 px-3'>
+            Cancel
+          </Button>
+        </ModalFooter>
+      </Modal>
         </div>
       )}
     </section>
