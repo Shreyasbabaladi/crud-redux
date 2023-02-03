@@ -57,14 +57,12 @@ const Eventes = ({ eventIteams, markComplete, updateEvent }) => {
     if (eventIteam.vehicleType === "Dropdown") {
       return alert("Please Add event");
     }
-    console.log("updated event" + JSON.stringify(eventIteam));
     updateEvent(eventIteam);
     togglePopup(); 
   };
 
   const handleSearch = (e) => {
-    setEvents(eventIteams.filter ((eventIteam) => eventIteam.vehicleType.includes(e.target.value) ))
-    console.log(events);
+    setEvents(eventIteams.filter ((eventIteam) => eventIteam.vehicleType.toLowerCase().includes(e.target.value.toLowerCase()) ));
   }
 
   return (
@@ -97,7 +95,7 @@ const Eventes = ({ eventIteams, markComplete, updateEvent }) => {
         <tbody>
           {events.map((eventIteam, index) => (
             <tr key={eventIteam.id}>
-              <th scope="row">{index}</th>
+              <th scope="row">{index+1}</th>
               <td>{eventIteam.vehicleType}</td>
               <td>{eventIteam.amount}</td>
               <td>{eventIteam.grace}</td>

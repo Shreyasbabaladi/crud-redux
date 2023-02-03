@@ -63,7 +63,6 @@ const EventForm = ({ addEvent }) => {
       return alert("Please Add event");
     }
     setEventIteam((eventIteam["id"] = v4()));
-    console.log("setting the event" + JSON.stringify(eventIteam));
     addEvent(eventIteam);
     setEventIteam(eventIteamsModal);
     togglePopup();
