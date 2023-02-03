@@ -24,7 +24,7 @@ import { addEvent } from "../action/operation";
 
 const eventIteamsModal = {
   id: "",
-  vehicleType: "Dropdown",
+  vehicleType: "Van",
   grace: 0,
   uom: "hours",
   amount: 0,
@@ -98,19 +98,25 @@ const EventForm = ({ addEvent }) => {
                         onClick={handleDropDown}
                         data-type="vehicleType"
                       >
-                        Header
+                        Taxi
                       </DropdownItem>
                       <DropdownItem
                         onClick={handleDropDown}
                         data-type="vehicleType"
                       >
-                        Some Action
+                        Bus
                       </DropdownItem>
                       <DropdownItem
                         onClick={handleDropDown}
                         data-type="vehicleType"
                       >
-                        Dropdown Item Text
+                        Ambulance
+                      </DropdownItem>
+                      <DropdownItem
+                        onClick={handleDropDown}
+                        data-type="vehicleType"
+                      >
+                        Dump truck
                       </DropdownItem>
                     </DropdownMenu>
                   </Dropdown>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   FormGroup,
@@ -26,7 +26,11 @@ const Eventes = ({ eventIteams, markComplete, updateEvent }) => {
   const [isSelected, selectionHander] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState({vehicleType: false,uom: false,});
   const [eventIteam, setEventIteam] = useState({});
-  // const [events, setEvents] = useState(eventIteams);
+  const [events, setEvents] = useState(eventIteams);
+
+  useEffect(()=>{
+    setEvents(eventIteams);
+  },[eventIteams])
 
   //handlers
   const togglePopup = () => selectionHander((prevState) => !prevState);
@@ -58,18 +62,18 @@ const Eventes = ({ eventIteams, markComplete, updateEvent }) => {
     togglePopup(); 
   };
 
-  // const handleSearch = (e) => {
-  //   setEvents(eventIteams.filter ((eventIteam) => eventIteam.vehicleType.includes(e.target.value) ))
-  //   console.log(events);
-  // }
+  const handleSearch = (e) => {
+    setEvents(eventIteams.filter ((eventIteam) => eventIteam.vehicleType.includes(e.target.value) ))
+    console.log(events);
+  }
 
   return (
     <section className="container">
-      {/* <div
+      <div
         color="primary"
         className="container row bg-primary text-white p-1 px-3 mt-1"
       >
-        <div className="col-6">
+        <div className="col-8">
           <h4> Late Delivery </h4>
         </div>
         <div className="col-lg-3">
@@ -79,7 +83,7 @@ const Eventes = ({ eventIteams, markComplete, updateEvent }) => {
             </InputGroup>
           </Form>
         </div>
-      </div> */}
+      </div>
       <Table className="text-center">
         <thead>
           <tr>
@@ -91,7 +95,7 @@ const Eventes = ({ eventIteams, markComplete, updateEvent }) => {
           </tr>
         </thead>
         <tbody>
-          {eventIteams.map((eventIteam, index) => (
+          {events.map((eventIteam, index) => (
             <tr key={eventIteam.id}>
               <th scope="row">{index}</th>
               <td>{eventIteam.vehicleType}</td>

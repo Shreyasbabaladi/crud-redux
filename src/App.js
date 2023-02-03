@@ -10,7 +10,6 @@ import store from './store';
 
 //redux
 import { Provider } from 'react-redux';
-import Header from './components/Header';
 
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
   return (
     <Provider store={store}>
       <Container fluid>
-        <Header />
         <Eventes />
         <EventForm />
       </Container>
